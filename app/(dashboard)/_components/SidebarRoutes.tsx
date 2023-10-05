@@ -1,6 +1,7 @@
-
+"use client"
 import React from 'react'
 import SidebarItem from './SidebarItem'
+import { usePathname } from 'next/navigation'
 
 // Convert Lucide icons to plain objects
 
@@ -9,19 +10,41 @@ const SidebarRoutes = () => {
 
   const guestRoutes = [
     {
-      icon: "layout",
+      icon: "Layout",
       label: "Dashboard",
       href: "/"
     },
     {
-      icon: "compass",
+      icon: "Compass",
       label: "Browse",
       href: "/search"
     }
   ]
+
+  const teacherRoutes = [
+    {
+      icon: "List",
+      label: "Courses",
+      href: "/teacher/courses"
+    },
+    {
+      icon: "BarChart",
+      label: "Analytics",
+      href: "/teacher/analytics"
+    }
+  ]
+
+  const pathname = usePathname()
+  const isTeacherPage = pathname.includes("/teacher")
+
+  const routes = isTeacherPage? teacherRoutes : guestRoutes
+
   return (
+    
+    
+
     <div className="flex flex-col w-full">
-    {guestRoutes.map((route) => (
+    {routes.map((route) => (
       <SidebarItem
         key={route.href}
         icon={route.icon}

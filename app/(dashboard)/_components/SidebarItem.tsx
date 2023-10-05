@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils";
-import { Compass, Layout} from "lucide-react";
+import { BarChart, Compass, Layout, List} from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import React from 'react'
 
@@ -10,8 +10,18 @@ interface SidebarItemProps {
     label: string;
     href: string;
   };
+  
+
 const SidebarItem = ({icon, label, href}: SidebarItemProps) => {
-  const Icon = icon === "layout"? Layout : Compass;
+
+  const icons:any = {
+    Layout: Layout,
+    Compass: Compass,
+    List: List,
+    BarChart: BarChart
+  }
+
+  const Icon = icons[icon]
   const pathName = usePathname()
   const router = useRouter()
 

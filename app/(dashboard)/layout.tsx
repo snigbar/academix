@@ -11,16 +11,16 @@ const layout = ({children}: {children:React.ReactNode}) => {
     <div className='h-full flex'>
 
         {/* sidebar */}
-        <div className='hidden md:flex h-full basis-[22%] lg:basis-[18%] flex-col inset-y-0 z-30'>
+        <div className='hidden md:flex h-full w-1/4 flex-col inset-y-0 z-40'>
             <Sidebar/>
         </div>
-        
+
         {/* navbar and main */}
         <div className="h-full">
-        <div className='w-full h-20 fixed inset-y-0 z-30'>
+        <div className='h-20 w-full md:w-3/4 fixed inset-y-0 z-30'>
         <Navbar/>
         </div>
-        <main className='h-full'>
+        <main className='h-full pt-24 pl-2'>
         {children}
         </main>
         </div>
